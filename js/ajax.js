@@ -10,7 +10,6 @@ $(document).ready(function() {
         })
             .done(function(result) {
                 let img = "";
-
                 console.log($(this).find('input[name="favoris"]'));
                 for (const property in result.sprites) {
                     if(result.sprites[property] != null && typeof result.sprites[property] == "string"){
