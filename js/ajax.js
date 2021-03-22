@@ -10,8 +10,9 @@ $(document).ready(function() {
         })
             .done(function(result) {
                 let img = "";
+
+                console.log($(this).find('input[name="favoris"]'));
                 for (const property in result.sprites) {
-                    console.log(`${property}: ${result.sprites[property]}`);
                     if(result.sprites[property] != null && typeof result.sprites[property] == "string"){
                         img += '<img src="'+result.sprites[property]+'"/>';
                     }
