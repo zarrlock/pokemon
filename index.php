@@ -11,8 +11,10 @@
 
 <section id="form">
     <form action="">
+        <label for="name">Nom du pokemon : </label>
         <input type="text" name="name" value="nom du Pokemon">
-
+        <label for="favoris">favoris</label>
+        <input type="checkbox" name="favoris">
         <input type="submit" value="submit">
     </form>
 </section>
