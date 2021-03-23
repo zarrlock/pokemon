@@ -9,16 +9,35 @@
 </head>
 <body class="bodyclass" id="bodyid">
 
+<h2 id="teamFav">Pokemon favoris</h2>
+<?php
+include('models/entities/pokemon.php');
+include('models/dao/pokemonDAO.php');
+include('controllers/pokemonController.php');
+
+$pokemonCon = new pokemonController();
+$pokemonCon->index();
+
+if(isset($_POST) && isset($_POST["fav"])){
+    echo var_dump($_POST);
+    $pokemon = array("name"=>$_POST["name"], "sprite"=>$_POST["sprite"]);
+    $pokemonCon->store($pokemon);
+}
+?>
 <section id="form">
-    <form action="">
+    <form action="" id="search">
         <label for="name">Nom du pokemon : </label>
-        <input type="text" name="name" value="nom du Pokemon">
-        <label for="favoris">favoris</label>
-        <input type="checkbox" name="favoris">
+        <input type="text" name="name" value="nom du Pokemon" id="name">
         <input type="submit" value="submit">
     </form>
 </section>
-<section id="response"></section>
+<section id="result">
+    <h2 id="pokemon"></h2>
+    <img src="" alt="" id="sprite">
+
+    <p></p>
+</section>
+<form id="favoris" ></form>
 </body>
 
 

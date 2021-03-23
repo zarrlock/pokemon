@@ -1,11 +1,11 @@
 <?php
 
 
-class pokDAO
+class pokemonDAO
 {
     function __construct()
     {
-        $this->table = 'pokemonfav';
+        $this->table = 'pokemon';
         $this->connection = new PDO('mysql:host=localhost;dbname=pokemon', 'root', '');
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
@@ -38,20 +38,56 @@ class pokDAO
 
     function createAll($results)
     {
-        $productList = array();
+        $pokemons = array();
         foreach ($results as $result) {
-            array_push($productList, $this->create($result));
+            array_push($pokemons, $this->create($result));
         }
-        return $productList;
+        return $pokemons;
     }
 
     function create($result)
     {
-        return new Product(
+        return new pokemon(
             $result['pk'],
             $result['name'],
             $result['sprite']
         );
+    }
+
+    function store($data)
+    {
+
+        $pokemon = $this->create(['pk' => 0, 'name' => $data['name'], 'sprite' => $data['sprite']]);
+
+        if ($pokemon) {
+            try {
+                $statement = $this->connection->prepare(
+                    "INSERT INTO {$this->table} (name, sprite) VALUES (?, ?)"
+                );
+                $statement->execute([
+                    htmlspecialchars($pokemon->__get('name')),
+                    htmlspecialchars($pokemon->__get('sprite'))
+                ]);
+            } catch (PDOException $e) {
+                print $e->getMessage();
+            }
+        }
+    }
+
+    function delete($data)
+    {
+        if (empty($data['id'])) {
+            return false;
+        }
+
+        try {
+            $statement = $this->connection->prepare("DELETE FROM {$this->table} WHERE pk = ?");
+            $statement->execute([
+                $data['id']
+            ]);
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
     }
 
 }

@@ -3,6 +3,12 @@
 
 class pokemon
 {
+    private $id;
+    private $name;
+    private $sprite;
+
+
+
     public function __construct ($id, $name, $sprite) {
         $this->id = $id;
         $this->name = $name;
