@@ -1,6 +1,7 @@
+
 <?php
 if (!empty($pokemons)): ?>
-    <section>
+    <section id="listFav">
         <table>
             <?php foreach ($pokemons as $pokemon): ?>
                 <tr>
@@ -19,4 +20,5 @@ if (!empty($pokemons)): ?>
             <?php endforeach; ?>
         </table>
     </section>
+
 <?php endif; ?>

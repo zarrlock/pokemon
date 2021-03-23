@@ -1,5 +1,13 @@
-<form action="" id="searchPokemon">
+<section id="form">
+
+    <form action="" id="search">
         <label for="name">Nom du pokemon : </label>
         <input type="text" name="name" value="nom du Pokemon" id="name">
         <input type="submit" value="submit">
-</form>
+    </form>
+</section>
+<section id="result">
+    <h2 id="pokemon"></h2>
+    <img src="" alt="" id="sprite">
+    <p></p>
+</section>

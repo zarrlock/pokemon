@@ -6,12 +6,11 @@ $(document).ready(function() {
         data.name = $(this).find('input[name="name"]').val();
         data.sprite = $(this).find('input[name="sprite"]').val();
         data.fav = true;
-        console.log(data);
-        $.post("index.php", data ,function() {
+        $.post("pokemonManager.php", data ,function() {
 
         })
             .done(function (result){
-                $('#result p').html(result);
+                $('#listFav').html(result);
             })
             .fail(function(error) {
                 $('#response').html("Pokemon pas rajouter en DB");
