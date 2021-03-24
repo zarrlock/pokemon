@@ -1,5 +1,27 @@
 $(document).ready(function() {
 
+
+    $('form.delete').on('submit', function (e){
+        e.preventDefault();
+        let data = {};
+        data.id = $(this).find('input[name="id"]').val();
+        data.delete = true;
+        console.log($(this).find('input[name="id"]').val())
+        console.log($(this))
+        $.post("pokemonManager.php", data ,function() {
+
+        })
+            .done(function (result){
+                $('#listFav').html(result);
+            })
+            .fail(function(error) {
+                $('#response').html("Pokemon pas rajouter en DB");
+                console.log('error', error);
+            });
+    })
+
+
+
     $('#favoris').on('submit', function (e){
         e.preventDefault();
         let data = {};

@@ -11,4 +11,8 @@ if(isset($_POST) && isset($_POST["fav"])) {
     $pokemonCon->store($pokemon);
 }
 
+if(isset($_POST) && isset($_POST["delete"])) {
+    $pokemonCon->delete($_POST);
+}
+
 $pokemonCon->index();
