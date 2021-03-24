@@ -9,5 +9,12 @@
 <section id="result">
     <h2 id="pokemon"></h2>
     <img src="" alt="" id="sprite">
+    <table id="types">
+        <tr id="listTypes"></tr>
+    </table>
+    <table id="abilities">
+        <tr id="listAbilities"></tr>
+    </table>
+    <table id="moves"></table>
     <p></p>
 </section>

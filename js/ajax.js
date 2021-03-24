@@ -49,10 +49,25 @@ $(document).ready(function() {
 
         })
             .done(function(result) {
+                console.log(result)
                 $('h2#pokemon').text(result.name);
                 $('img#sprite').attr('src', result.sprites.front_default);$('#result p').html("");
                 $('#favoris').html('<input type="hidden"  name="name" value="'+result.name+'"><input type="hidden" name="sprite" value="'+result.sprites.front_default+'"><input type="submit" value="rajouter au favoris" id="favoris">');
-
+                let abilities = "";
+                result.abilities.map(function (ability){
+                    abilities += "<td>"+ability.ability.name+"</td>";
+                });
+                $('tr#listAbilities').html(abilities);
+                let moves = ""
+                result.moves.map(function (move){
+                    moves += "<tr><td>"+move.move.name+"</td></tr>";
+                });
+                $("table#moves").html(moves);
+                let types = "";
+                result.types.map(function (type){
+                    types += "<td>"+type.type.name+"</td>";
+                });
+                $('tr#listTypes').html(types);
             })
             .fail(function(error) {
                 $('h2#pokemon').text("");
