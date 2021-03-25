@@ -1,6 +1,24 @@
 $(document).ready(function() {
 
 
+    let url = "https://pokeapi.co/api/v2/pokemon?limit=898&offset=0"
+    $.get(url,function (){
+    })
+        .done(function (result){
+            let random_title = setInterval(function() {
+                let pokemon = result.results[Math.floor(Math.random() * Math.floor(result.results.length))]
+                $.get(pokemon,function (){
+
+                })
+                    .done(function (result){
+                        console.log(result)
+                        let baniere = "<table><tr><td><h3>"+result.name+"</h3></td><td><img src='"+result.sprites.front_default+"'></td></tr></table>";
+                        $('#baniere').html(baniere);
+                })
+            }, 5000);
+
+        });
+
     $('form.delete').on('submit', function (e){
         e.preventDefault();
         let data = {};
@@ -77,6 +95,5 @@ $(document).ready(function() {
                 console.log('error', error);
             });
     });
-
 
 });

@@ -8,7 +8,7 @@
     <script src="js/ajax.js"></script>
 </head>
 <body class="bodyclass" id="bodyid">
-
+<section id="baniere"></section>
 <h2 id="teamFav">Pokemon favoris</h2>
 <?php
 
