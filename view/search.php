@@ -9,6 +9,7 @@
 <section id="result">
     <h2 id="pokemon"></h2>
     <img src="" alt="" id="sprite">
+    <form id="favoris" ></form>
     <table id="types">
         <tr id="listTypes"></tr>
     </table>

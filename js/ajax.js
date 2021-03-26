@@ -1,10 +1,9 @@
+
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1)
 }
 
-
 $(document).ready(function() {
-
 
     let url = "https://pokeapi.co/api/v2/pokemon?limit=898&offset=0"
     $.get(url,function (){
@@ -18,14 +17,13 @@ $(document).ready(function() {
                     .done(function (result){
                         let baniere = "<table><tr><td><h3>"+result.name.capitalize()+"</h3></td><td><img src='"+result.sprites.front_default+"'></td></tr></table>";
                         $('#baniere').html(baniere);
-                })
+                    })
             }, 5000);
 
         });
 
-    $('form.delete').on('submit', function (e){
+    $('.delete').on('submit', function (e){
         e.preventDefault();
-        console.log("ok")
         let data = {};
         data.id = $(this).find('input[name="id"]').val();
         data.delete = true;
@@ -36,7 +34,7 @@ $(document).ready(function() {
                 $('#listFav').html(result);
             })
             .fail(function(error) {
-                $('#response').html("Pokemon pas supprimer en DB");
+                $('#response').html("Pokemon pas rajouter en DB");
                 console.log('error', error);
             });
     })
@@ -70,7 +68,6 @@ $(document).ready(function() {
 
         })
             .done(function(result) {
-                console.log(result)
                 $('h2#pokemon').text(result.name.capitalize());
                 $('img#sprite').attr('src', result.sprites.front_default);$('#result p').html("");
                 $('#favoris').html('<input type="hidden"  name="name" value="'+result.name+'"><input type="hidden" name="sprite" value="'+result.sprites.front_default+'"><input type="submit" value="rajouter au favoris" id="favoris">');
@@ -95,6 +92,9 @@ $(document).ready(function() {
                 $('img#sprite').attr('src', "" );
                 $('#result p').html("Pokemon pas trouver");
                 $('#favoris').text("");
+                $("table#moves").html("");
+                $('tr#listTypes').html("");
+                $('tr#listAbilities').html("");
                 console.log('error', error);
             });
     });

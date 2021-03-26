@@ -11,7 +11,7 @@ if (!empty($pokemons)): ?>
                     <td><img src="<?= $pokemon->__get('sprite'); ?>"></td>
                     <td>
 
-                        <form action=""  class="delete">
+                        <form action="" method="post" class="delete">
                             <input type="hidden" name="id" value="<?= $pokemon->__get('id'); ?>">
                             <input type="submit" value="Supprimer" name="delete">
 
