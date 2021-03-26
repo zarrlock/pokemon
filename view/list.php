@@ -7,11 +7,11 @@ if (!empty($pokemons)): ?>
 
                 <tr>
                     <td><?= $pokemon->__get('id'); ?></td>
-                    <td><?= $pokemon->__get('name'); ?></td>
+                    <td><?= ucfirst($pokemon->__get('name')); ?></td>
                     <td><img src="<?= $pokemon->__get('sprite'); ?>"></td>
                     <td>
 
-                        <form action="pokemonManager.php" method="post" class="delete">
+                        <form action=""  class="delete">
                             <input type="hidden" name="id" value="<?= $pokemon->__get('id'); ?>">
                             <input type="submit" value="Supprimer" name="delete">
 
